@@ -24,6 +24,7 @@ CREATE TABLE IF NOT EXISTS product (
   description VARCHAR(255),
   unit_price DECIMAL(13,2),
   image_url VARCHAR(255),
+  active BOOLEAN,
   units_in_stock INT,
   created_date timestamp,
   last_updated_date timestamp,
