@@ -10,21 +10,9 @@
         />
       </a>
     </div>
-    <div class="menu-sidebar-content js-scrollbar1">
-      <nav class="navbar-sidebar">
-        <ul class="list-unstyled navbar-list">
-          <li>
-            <a href="#">Ceaiuri medicinale</a>
-          </li>
-          <li>
-            <a href="#">Ceaiuri dietetice</a>
-          </li>
-          <li>
-            <a href="#">Ceaiuri pentru uz extern</a>
-          </li>
-        </ul>
-      </nav>
-    </div>
+
+    <app-product-category-menu></app-product-category-menu>
+
   </aside>
   <!-- END MENU SIDEBAR-->
 
@@ -58,7 +46,8 @@
     <!-- END HEADER DESKTOP-->
 
     <!-- MAIN CONTENT-->
-    <app-product-list></app-product-list>
+    
+    <router-outlet></router-outlet>
   
   
   </div>
