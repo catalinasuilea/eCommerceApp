@@ -11,4 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface ProductRepository extends JpaRepository<Product, Integer> {
 
     Page<Product> findByCategoryId(@RequestParam("id") Integer id, Pageable pageable);
+
+    Page<Product> findByNameContaining(@RequestParam("name") String name, Pageable pageable);
 }

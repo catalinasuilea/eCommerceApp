@@ -13,6 +13,7 @@ export class ProductListComponent implements OnInit {
 
   products: Product[];
   currentCategoryId: number;
+  searchMode: boolean;
   
   constructor(private productService: ProductService,
               private route: ActivatedRoute) { } //necesar pentru a accesa parametrii unei rute (noi trebuie sa accesam categoryId)
@@ -24,25 +25,48 @@ export class ProductListComponent implements OnInit {
   }
 
   listProducts() {
-    
-    //check if "id" parameter is available
-    const hasCategoryId: boolean = this.route.snapshot.paramMap.has('id') ///snapshot = state of the route at this given moment in time
 
-    if(hasCategoryId) {
-      //get the "id" param string and convert it to a number using the "+" symbol
-      this.currentCategoryId = +this.route.snapshot.paramMap.get('id'); //paraneter value is returned as a string and we conert it to a number using +
+    this.searchMode = this.route.snapshot.paramMap.has('keyword');
+
+    if(this.searchMode) {
+      this.handleSearchProducts();
     }
     else {
-      //not category id available => default to category id 1
-      this.currentCategoryId = 1;
+      this.handleListProducts();
     }
 
-    // now get the products for the given category id
-    this.productService.getProductList(this.currentCategoryId).subscribe(
+  }
+
+  handleSearchProducts() {
+    const theKeyword: string = this.route.snapshot.paramMap.get('keyword');
+
+    // now search for the products using keyword
+    this.productService.searchProducts(theKeyword).subscribe(
       data => {
         this.products = data;
       }
-    )
+    );
+  }
+
+  handleListProducts() {
+        //check if "id" parameter is available
+        const hasCategoryId: boolean = this.route.snapshot.paramMap.has('id') ///snapshot = state of the route at this given moment in time
+
+        if(hasCategoryId) {
+          //get the "id" param string and convert it to a number using the "+" symbol
+          this.currentCategoryId = +this.route.snapshot.paramMap.get('id'); //paraneter value is returned as a string and we conert it to a number using +
+        }
+        else {
+          //not category id available => default to category id 1
+          this.currentCategoryId = 1;
+        }
+    
+        // now get the products for the given category id
+        this.productService.getProductList(this.currentCategoryId).subscribe(
+          data => {
+            this.products = data;
+          }
+        )
   }
 
 }
