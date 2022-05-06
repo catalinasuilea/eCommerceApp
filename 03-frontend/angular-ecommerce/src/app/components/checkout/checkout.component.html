@@ -1,0 +1,238 @@
+<div class="main-content page-m">
+  <div class="section-content section-content-p30">
+    <div class="container-fluid">
+      <form [formGroup]="checkoutFormGroup" (ngSubmit)="onSubmit()">
+        <!-- customer form grup -->
+        <div formGroupName="customer" class="form-area">
+          <h3>Client</h3>
+
+          <div class="row">
+            <div class="col-md-2"><label>Prenume</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <input formControlName="firstName" type="text" />
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-2"><label>Nume</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <input formControlName="lastName" type="text" />
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-2"><label>Email</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <input formControlName="email" type="text" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- shipping address -->
+        <div formGroupName="shippingAddress" class="form-area">
+          <h3>Adresa de livrare</h3>
+
+          <div class="row">
+            <div class="col-md-2"><label>Țara</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <select formControlName="country">
+                    <option>TO DO</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-2"><label>Strada</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <input formControlName="street" type="text" />
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-2"><label>Oraș</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <input formControlName="city" type="text" />
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-2"><label>Stat</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <select formControlName="state">
+                    <option>TO DO</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-2"><label>Cod Poștal</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <input formControlName="zipCode" type="text" />
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- Add check box to copy shipping to billing -->
+        <div class="input-space">
+          <label class="au-checkbox">
+            <input type="checkbox" (change)="copyShippingAddressToBillingAddress($event)">
+            <span class="au-checkmark"></span>Adresa de facturare este aceeași cu adresa de livrare
+          </label>
+        </div>
+
+        <!-- Billing Address -->
+        <div formGroupName="billingAddress" class="form-area">
+          <h3>Adresa de facturare</h3>
+
+          <div class="row">
+            <div class="col-md-2"><label>Țara</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <select formControlName="country">
+                    <option>TO DO</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-2"><label>Strada</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <input formControlName="street" type="text" />
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-2"><label>Oraș</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <input formControlName="city" type="text" />
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-2"><label>Stat</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <select formControlName="state">
+                    <option>TO DO</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-2"><label>Cod Poștal</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <input formControlName="zipCode" type="text" />
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Credit Card -->
+        <div formGroupName="creditCard" class="form-area">
+          <h3>Card bancar</h3>
+
+          <div class="row">
+            <div class="col-md-2"><label>Tip de card</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <select formControlName="cardType">
+                    <option>Visa</option>
+                    <option>Mastercard</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-2"><label>Nume card</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <input formControlName="nameOnCard" type="text" />
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-2"><label>Numar card</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <input formControlName="cardNumber" type="text" />
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-2"><label>Cod de securitate</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <input formControlName="securityCode" type="text" />
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-2"><label>Luna de expirare</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <select formControlName="expirationMonth">
+                    <option>TO DO</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-2"><label>Anul de expirare</label></div>
+            <div class="col-md-9">
+              <div class="input-space">
+                <select formControlName="expirationYear">
+                    <option>TO DO</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Order Details -->
+        <div class="form-area">
+          <h3>Comanda ta</h3>
+
+          <p>Cantitatea totala: {{ totalQuantity }}</p>
+          <p>Livrare: GRATUITA</p>
+          <p>Pretul total: {{ totalPrice | currency: 'USD' }}</p>
+        </div>
+
+        <!-- submit button -->
+        <div class="text-center">
+          <button type="submit" class="btn btn-info">Finalizează comanda</button>
+        </div>
+        
+      </form>
+    </div>
+  </div>
+</div>

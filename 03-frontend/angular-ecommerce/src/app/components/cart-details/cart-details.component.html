@@ -46,7 +46,7 @@
               </div>
 
               <div class ="col">
-              <button (click)="remove(tempCartItem)" class="btn btn-primary btn-sm">Elimina din cos</button>
+              <button (click)="remove(tempCartItem)" class="btn btn-primary btn-sm">Elimină din coș</button>
             </div>
 
               <p class="mt-2">
@@ -65,6 +65,9 @@
               <p>Cantitatea totala: {{ totalQuantity }}</p>
               <p>Livrare: GRATIS</p>
               <p>Pretul total: {{ totalPrice | currency: "USD" }}</p>
+              <div class ="col">
+              <a routerLink="/checkout" class="btn btn-primary">Mergi la casă</a>
+            </div>
             </td>
           </tr>
         </table>
@@ -75,7 +78,7 @@
         class="alert alert-warning col-md-12"
         role="aler"
       >
-        Cosul tau de cumparaturi este gol.
+        Coșul tău de cumpărături este gol.
       </div>
     </div>
   </div>
