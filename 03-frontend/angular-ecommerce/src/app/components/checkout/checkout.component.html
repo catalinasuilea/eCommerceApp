@@ -11,6 +11,26 @@
             <div class="col-md-9">
               <div class="input-space">
                 <input formControlName="firstName" type="text" />
+
+                <div
+                  *ngIf="
+                    firstName.invalid && (firstName.dirty || firstName.touched)
+                  "
+                  class="alert alert-danger mt-1"
+                >
+                  <div
+                    *ngIf="
+                      firstName.errors.required ||
+                      firstName.errors.notOnlyWhitespace
+                    "
+                  >
+                    Prenumele este obligatoriu!
+                  </div>
+
+                  <div *ngIf="firstName.errors.minlength">
+                    Prenumele trebuie sa contina cel putin 2 caractere!
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -20,6 +40,26 @@
             <div class="col-md-9">
               <div class="input-space">
                 <input formControlName="lastName" type="text" />
+
+                <div
+                  *ngIf="
+                    lastName.invalid && (lastName.dirty || lastName.touched)
+                  "
+                  class="alert alert-danger mt-1"
+                >
+                  <div
+                    *ngIf="
+                      lastName.errors.required ||
+                      lastName.errors.notOnlyWhitespace
+                    "
+                  >
+                    Numele este obligatoriu!
+                  </div>
+
+                  <div *ngIf="lastName.errors.minlength">
+                    Numele trebuie sa contina cel putin 2 caractere!
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -29,6 +69,20 @@
             <div class="col-md-9">
               <div class="input-space">
                 <input formControlName="email" type="text" />
+
+                <div
+                  *ngIf="email.invalid && (email.dirty || email.touched)"
+                  class="alert alert-danger mt-1"
+                >
+                  <div *ngIf="email.errors.required">
+                    Email-ul este obligatoriu!
+                  </div>
+
+                  <div *ngIf="email.errors.pattern">
+                    Emailul trebuie sa aiba un format de email valid! Exemplu:
+                    tea@gmail.com
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -42,11 +96,32 @@
             <div class="col-md-2"><label>Țara</label></div>
             <div class="col-md-9">
               <div class="input-space">
-                <select formControlName="country" (change)="getStates('shippingAddress')">
+                <select
+                  formControlName="country"
+                  (change)="getStates('shippingAddress')"
+                >
                   <option *ngFor="let country of countries" [ngValue]="country">
                     {{ country.name }}
                   </option>
                 </select>
+
+                <div
+                  *ngIf="
+                    shippingAddressCountry.invalid &&
+                    (shippingAddressCountry.dirty ||
+                      shippingAddressCountry.touched)
+                  "
+                  class="alert alert-danger mt-1"
+                >
+                  <div
+                    *ngIf="
+                      shippingAddressCountry.errors.required ||
+                      shippingAddressCountry.errors.notOnlyWhitespace
+                    "
+                  >
+                    Țara este obligatorie!
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -56,6 +131,28 @@
             <div class="col-md-9">
               <div class="input-space">
                 <input formControlName="street" type="text" />
+
+                <div
+                  *ngIf="
+                    shippingAddressStreet.invalid &&
+                    (shippingAddressStreet.dirty ||
+                      shippingAddressStreet.touched)
+                  "
+                  class="alert alert-danger mt-1"
+                >
+                  <div
+                    *ngIf="
+                      shippingAddressStreet.errors.required ||
+                      shippingAddressStreet.errors.notOnlyWhitespace
+                    "
+                  >
+                    Strada este obligatorie!
+                  </div>
+
+                  <div *ngIf="shippingAddressStreet.errors.minlength">
+                    Strada trebuie sa contina ce putin 2 caractere!
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -65,6 +162,27 @@
             <div class="col-md-9">
               <div class="input-space">
                 <input formControlName="city" type="text" />
+
+                <div
+                  *ngIf="
+                    shippingAddressCity.invalid &&
+                    (shippingAddressCity.dirty || shippingAddressCity.touched)
+                  "
+                  class="alert alert-danger mt-1"
+                >
+                  <div
+                    *ngIf="
+                      shippingAddressCity.errors.required ||
+                      shippingAddressCity.errors.notOnlyWhitespace
+                    "
+                  >
+                    Orașul este obligatoriu!
+                  </div>
+
+                  <div *ngIf="shippingAddressCity.errors.minlength">
+                    Orașul trebuie sa contina ce putin 2 caractere!
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -74,29 +192,75 @@
             <div class="col-md-9">
               <div class="input-space">
                 <select formControlName="state">
-                    <option *ngFor="let state of shippingAddressState" [ngValue]="state">
-                      {{ state.name }}
-                    </option>
+                  <option
+                    *ngFor="let state of shippingAddressState"
+                    [ngValue]="state"
+                  >
+                    {{ state.name }}
+                  </option>
                 </select>
+
+                <div
+                  *ngIf="
+                    shippingAddressStatet.invalid &&
+                    (shippingAddressStatet.dirty ||
+                      shippingAddressStatet.touched)
+                  "
+                  class="alert alert-danger mt-1"
+                >
+                  <div
+                    *ngIf="
+                      shippingAddressStatet.errors.required ||
+                      shippingAddressStatet.errors.notOnlyWhitespace
+                    "
+                  >
+                    Statul este obligatoriu!
+                  </div>
+                </div>
               </div>
             </div>
           </div>
 
           <div class="row">
-            <div class="col-md-2"><label>Cod Poștal</label></div>
+            <div class="col-md-2"><label>Cod poștal</label></div>
             <div class="col-md-9">
               <div class="input-space">
                 <input formControlName="zipCode" type="text" />
+
+                <div
+                  *ngIf="
+                    shippingAddressZipCode.invalid &&
+                    (shippingAddressZipCode.dirty ||
+                      shippingAddressZipCode.touched)
+                  "
+                  class="alert alert-danger mt-1"
+                >
+                  <div
+                    *ngIf="
+                      shippingAddressZipCode.errors.required ||
+                      shippingAddressZipCode.errors.notOnlyWhitespace
+                    "
+                  >
+                    Codul poștal este obligatoriu!
+                  </div>
+
+                  <div *ngIf="shippingAddressZipCode.errors.minlength">
+                    Codul poștal trebuie sa contina ce putin 2 caractere!
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-
         </div>
         <!-- Add check box to copy shipping to billing -->
         <div class="input-space">
           <label class="au-checkbox">
-            <input type="checkbox" (change)="copyShippingAddressToBillingAddress($event)">
-            <span class="au-checkmark"></span>Adresa de facturare este aceeași cu adresa de livrare
+            <input
+              type="checkbox"
+              (change)="copyShippingAddressToBillingAddress($event)"
+            />
+            <span class="au-checkmark"></span>Adresa de facturare este aceeași
+            cu adresa de livrare
           </label>
         </div>
 
@@ -108,11 +272,32 @@
             <div class="col-md-2"><label>Țara</label></div>
             <div class="col-md-9">
               <div class="input-space">
-                <select formControlName="country" (change)="getStates('billingAddress')">
+                <select
+                  formControlName="country"
+                  (change)="getStates('billingAddress')"
+                >
                   <option *ngFor="let country of countries" [ngValue]="country">
                     {{ country.name }}
                   </option>
                 </select>
+
+                <div
+                  *ngIf="
+                    billingAddressCountry.invalid &&
+                    (billingAddressCountry.dirty ||
+                      billingAddressCountry.touched)
+                  "
+                  class="alert alert-danger mt-1"
+                >
+                  <div
+                    *ngIf="
+                      billingAddressCountry.errors.required ||
+                      billingAddressCountry.errors.notOnlyWhitespace
+                    "
+                  >
+                    Țara este obligatorie!
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -122,6 +307,27 @@
             <div class="col-md-9">
               <div class="input-space">
                 <input formControlName="street" type="text" />
+
+                <div
+                  *ngIf="
+                    billingAddressStreet.invalid &&
+                    (billingAddressStreet.dirty || billingAddressStreet.touched)
+                  "
+                  class="alert alert-danger mt-1"
+                >
+                  <div
+                    *ngIf="
+                      billingAddressStreet.errors.required ||
+                      billingAddressStreet.errors.notOnlyWhitespace
+                    "
+                  >
+                    Strada este obligatorie!
+                  </div>
+
+                  <div *ngIf="billingAddressStreet.errors.minlength">
+                    Strada trebuie sa contina ce putin 2 caractere!
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -131,6 +337,27 @@
             <div class="col-md-9">
               <div class="input-space">
                 <input formControlName="city" type="text" />
+
+                <div
+                  *ngIf="
+                    billingAddressCity.invalid &&
+                    (billingAddressCity.dirty || billingAddressCity.touched)
+                  "
+                  class="alert alert-danger mt-1"
+                >
+                  <div
+                    *ngIf="
+                      billingAddressCity.errors.required ||
+                      billingAddressCity.errors.notOnlyWhitespace
+                    "
+                  >
+                    Orașul este obligatoriu!
+                  </div>
+
+                  <div *ngIf="billingAddressCity.errors.minlength">
+                    Orașul trebuie sa contina ce putin 2 caractere!
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -140,23 +367,64 @@
             <div class="col-md-9">
               <div class="input-space">
                 <select formControlName="state">
-                  <option *ngFor="let state of billingAddressState" [ngValue]="state">
+                  <option
+                    *ngFor="let state of billingAddressState"
+                    [ngValue]="state"
+                  >
                     {{ state.name }}
                   </option>
                 </select>
+
+                <div
+                  *ngIf="
+                    billingAddressStatet.invalid &&
+                    (billingAddressStatet.dirty || billingAddressStatet.touched)
+                  "
+                  class="alert alert-danger mt-1"
+                >
+                  <div
+                    *ngIf="
+                      billingAddressStatet.errors.required ||
+                      billingAddressStatet.errors.notOnlyWhitespace
+                    "
+                  >
+                    Statul este obligatoriu!
+                  </div>
+                </div>
               </div>
             </div>
           </div>
 
           <div class="row">
-            <div class="col-md-2"><label>Cod Poștal</label></div>
+            <div class="col-md-2"><label>Cod poștal</label></div>
             <div class="col-md-9">
               <div class="input-space">
                 <input formControlName="zipCode" type="text" />
+
+                <div
+                  *ngIf="
+                    billingAddressZipCode.invalid &&
+                    (billingAddressZipCode.dirty ||
+                      billingAddressZipCode.touched)
+                  "
+                  class="alert alert-danger mt-1"
+                >
+                  <div
+                    *ngIf="
+                      billingAddressZipCode.errors.required ||
+                      billingAddressZipCode.errors.notOnlyWhitespace
+                    "
+                  >
+                    Codul poștal este obligatoriu!
+                  </div>
+
+                  <div *ngIf="billingAddressZipCode.errors.minlength">
+                    Codul poștal trebuie sa contina ce putin 2 caractere!
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-
         </div>
 
         <!-- Credit Card -->
@@ -168,66 +436,150 @@
             <div class="col-md-9">
               <div class="input-space">
                 <select formControlName="cardType">
-                    <option>Visa</option>
-                    <option>Mastercard</option>
+                  <option>Visa</option>
+                  <option>Mastercard</option>
                 </select>
+
+                <div
+                  *ngIf="
+                    creditCardType.invalid &&
+                    (creditCardType.dirty || creditCardType.touched)
+                  "
+                  class="alert alert-danger mt-1"
+                >
+                  <div
+                    *ngIf="
+                      creditCardType.errors.required ||
+                      creditCardType.errors.notOnlyWhitespace
+                    "
+                  >
+                    Tipul de card este obligatoriu!
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="row">
-            <div class="col-md-2"><label>Nume card</label></div>
-            <div class="col-md-9">
-              <div class="input-space">
-                <input formControlName="nameOnCard" type="text" />
+            <div class="row">
+              <div class="col-md-2"><label>Nume card</label></div>
+              <div class="col-md-9">
+                <div class="input-space">
+                  <input formControlName="nameOnCard" type="text" />
+
+                  <div
+                    *ngIf="
+                      creditCardNameOnCard.invalid &&
+                      (creditCardNameOnCard.dirty ||
+                        creditCardNameOnCard.touched)
+                    "
+                    class="alert alert-danger mt-1"
+                  >
+                    <div
+                      *ngIf="
+                        creditCardNameOnCard.errors.required ||
+                        creditCardNameOnCard.errors.notOnlyWhitespace
+                      "
+                    >
+                      Numele cardului este obligatoriu!
+                    </div>
+
+                    <div *ngIf="creditCardNameOnCard.errors.minlength">
+                      Numele cardului trebuie sa contina ce putin 2 caractere!
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="row">
-            <div class="col-md-2"><label>Numar card</label></div>
-            <div class="col-md-9">
-              <div class="input-space">
-                <input formControlName="cardNumber" type="text" />
+            <div class="row">
+              <div class="col-md-2"><label>Numar card</label></div>
+              <div class="col-md-9">
+                <div class="input-space">
+                  <input formControlName="cardNumber" type="text" />
+
+                  <div
+                    *ngIf="
+                      creditCardNumber.invalid &&
+                      (creditCardNumber.dirty || creditCardNumber.touched)
+                    "
+                    class="alert alert-danger mt-1"
+                  >
+                    <div
+                      *ngIf="
+                        creditCardNumber.errors.required ||
+                        creditCardNumber.errors.notOnlyWhitespace
+                      "
+                    >
+                      Numarul cardului este obligatoriu!
+                    </div>
+
+                    <div *ngIf="creditCardNumber.errors.pattern">
+                      Numarul cardului trebuie sa contina 16 numere!
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="row">
-            <div class="col-md-2"><label>Cod de securitate</label></div>
-            <div class="col-md-9">
-              <div class="input-space">
-                <input formControlName="securityCode" type="text" />
+            <div class="row">
+              <div class="col-md-2"><label>Cod de securitate</label></div>
+              <div class="col-md-9">
+                <div class="input-space">
+                  <input formControlName="securityCode" type="text" />
+
+                  <div
+                    *ngIf="
+                      creditCardSecurityCode.invalid &&
+                      (creditCardSecurityCode.dirty ||
+                        creditCardSecurityCode.touched)
+                    "
+                    class="alert alert-danger mt-1"
+                  >
+                    <div
+                      *ngIf="
+                        creditCardSecurityCode.errors.required ||
+                        creditCardSecurityCode.errors.notOnlyWhitespace
+                      "
+                    >
+                      Numarul cardului este obligatoriu!
+                    </div>
+
+                    <div *ngIf="creditCardSecurityCode.errors.pattern">
+                      Numarul cardului trebuie sa contina 3 numere!
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="row">
-            <div class="col-md-2"><label>Luna de expirare</label></div>
-            <div class="col-md-9">
-              <div class="input-space">
-                <select formControlName="expirationMonth">
-                  <option *ngFor="let month of creditCardMonths">
-                    {{ month }}
-                  </option>
-                </select>
+            <div class="row">
+              <div class="col-md-2"><label>Luna de expirare</label></div>
+              <div class="col-md-9">
+                <div class="input-space">
+                  <select formControlName="expirationMonth">
+                    <option *ngFor="let month of creditCardMonths">
+                      {{ month }}
+                    </option>
+                  </select>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="row">
-            <div class="col-md-2"><label>Anul de expirare</label></div>
-            <div class="col-md-9">
-              <div class="input-space">
-                <select formControlName="expirationYear" (change)="handleMonthsAndYears()">
+            <div class="row">
+              <div class="col-md-2"><label>Anul de expirare</label></div>
+              <div class="col-md-9">
+                <div class="input-space">
+                  <select
+                    formControlName="expirationYear"
+                    (change)="handleMonthsAndYears()"
+                  >
                     <option *ngFor="let year of creditCardYears">
                       {{ year }}
                     </option>
-                </select>
+                  </select>
+                </div>
               </div>
             </div>
           </div>
-
         </div>
 
         <!-- Order Details -->
@@ -236,14 +588,15 @@
 
           <p>Cantitatea totala: {{ totalQuantity }}</p>
           <p>Livrare: GRATUITA</p>
-          <p>Pretul total: {{ totalPrice | currency: 'USD' }}</p>
+          <p>Pretul total: {{ totalPrice | currency: "USD" }}</p>
         </div>
 
         <!-- submit button -->
         <div class="text-center">
-          <button type="submit" class="btn btn-info">Finalizează comanda</button>
+          <button type="submit" class="btn btn-info">
+            Finalizează comanda
+          </button>
         </div>
-        
       </form>
     </div>
   </div>
