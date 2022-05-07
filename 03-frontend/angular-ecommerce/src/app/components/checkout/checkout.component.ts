@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { of } from 'rxjs';
 import { Country } from 'src/app/common/country';
 import { State } from 'src/app/common/state';
+import { CartService } from 'src/app/services/cart.service';
 import { ECommerceFormService } from 'src/app/services/e-commerce-form.service';
 import { ECommerceValidators } from 'src/app/validators/e-commerce-validators';
 
@@ -27,9 +28,12 @@ export class CheckoutComponent implements OnInit {
   billingAddressState: State[] = [];
   
   constructor(private formBuilder: FormBuilder,
-              private eCommerceFormService: ECommerceFormService) { }
+              private eCommerceFormService: ECommerceFormService,
+              private cartService: CartService) { }
 
   ngOnInit(): void {
+
+    this.reviewCartDetails();
 
     this.checkoutFormGroup = this.formBuilder.group({
       customer: this.formBuilder.group({
@@ -86,6 +90,18 @@ export class CheckoutComponent implements OnInit {
         console.log("Retrived countries: " + JSON.stringify(data));
         this.countries = data;
       }
+    );
+  }
+
+  reviewCartDetails() {
+    //subscribe to cartService.totalQuantity
+    this.cartService.totalQuantity.subscribe(
+      totalQuantity => this.totalQuantity = totalQuantity
+    );
+
+    //subscribe to cartService.totalQuantity
+    this.cartService.totalPrice.subscribe(
+      totalPrice => this.totalPrice = totalPrice
     );
   }
 
