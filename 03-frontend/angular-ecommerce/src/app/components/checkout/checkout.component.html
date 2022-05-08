@@ -460,7 +460,7 @@
             </div>
 
             <div class="row">
-              <div class="col-md-2"><label>Nume card</label></div>
+              <div class="col-md-2"><label>Nume titular card</label></div>
               <div class="col-md-9">
                 <div class="input-space">
                   <input formControlName="nameOnCard" type="text" />
@@ -479,11 +479,11 @@
                         creditCardNameOnCard.errors.notOnlyWhitespace
                       "
                     >
-                      Numele cardului este obligatoriu!
+                      Numele titularului este obligatoriu!
                     </div>
 
                     <div *ngIf="creditCardNameOnCard.errors.minlength">
-                      Numele cardului trebuie sa contina ce putin 2 caractere!
+                      Numele titularului trebuie sa contina ce putin 2 caractere!
                     </div>
                   </div>
                 </div>
