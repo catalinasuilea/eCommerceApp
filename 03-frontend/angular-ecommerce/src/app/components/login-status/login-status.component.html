@@ -1,0 +1,10 @@
+<div class="login-status-header">
+    <div *ngIf="isAuthenticated && userFullName" class="login-status-user-info">
+        Bun venit, {{ userFullName }}!
+    </div>
+
+    <button *ngIf="!isAuthenticated" routerLink="/login" class="security-btn">Intră în cont</button>
+
+    <button *ngIf="isAuthenticated" (click)="logout()" class="security-btn">Ieși din cont</button>
+
+</div>
