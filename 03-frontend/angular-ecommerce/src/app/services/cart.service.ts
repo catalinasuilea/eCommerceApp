@@ -14,7 +14,21 @@ export class CartService {
   totalPrice: Subject<number> = new BehaviorSubject<number>(0); 
   totalQuantity: Subject<number> = new BehaviorSubject<number>(0); 
 
-  constructor() { }
+  storage: Storage = sessionStorage; //referinta la stocarea sesiunii browserului web (acces gratuit) (cosul se reseteaza dupa ce inchid browserul)
+  //storage: Storage = localStorage; //referinta la stocarea sesiunii browserului web (acces gratuit) (se pastreaza datele din cos mereu)
+
+  constructor() {
+    //read the data from the storage (from browser web)
+    let data = JSON.parse(this.storage.getItem('cartItems')); // Read JSON string and convert to object, cartItems = key
+
+    if(data != null) {
+      this.cartItems = data;
+
+    //compute totals based on the data that is read from storage
+    this.computeCartTotals();
+    }
+
+   }
 
   addToCart(theCartItem: CartItem) {
     
@@ -58,6 +72,15 @@ export class CartService {
    
       //log cart data jus for debubugginf purposes
       this.logCartData(totalPriceValue, totalQuantityValue);
+
+      //persist the cart data
+      this.persistCartItems();
+  }
+
+  persistCartItems() {
+    //convert object to JSON string because the API only work for strings (key and value)
+    // key = 'cartItems', value = JSON.stringify(this.cartItems) and that both are string
+    this.storage.setItem('cartItems', JSON.stringify(this.cartItems)); 
   }
 
   logCartData(totalPriceValue: number, totalQuantityValue: number) {
