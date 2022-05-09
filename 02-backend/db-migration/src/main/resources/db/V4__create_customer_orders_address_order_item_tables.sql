@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS customer (
     id serial NOT NULL PRIMARY KEY,
     first_name varchar(255) NOT NULL,
     last_name varchar(255) NOT NULL,
-    email varchar(50) NOT NULL
+    email varchar(50) NOT NULL UNIQUE
 );
 
 CREATE TABLE IF NOT EXISTS address (
