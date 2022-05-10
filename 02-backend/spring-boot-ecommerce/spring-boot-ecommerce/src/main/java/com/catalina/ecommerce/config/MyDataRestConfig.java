@@ -1,9 +1,6 @@
 package com.catalina.ecommerce.config;
 
-import com.catalina.ecommerce.entity.Country;
-import com.catalina.ecommerce.entity.Product;
-import com.catalina.ecommerce.entity.ProductCategory;
-import com.catalina.ecommerce.entity.State;
+import com.catalina.ecommerce.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
@@ -37,10 +34,11 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
         HttpMethod[] theUnsupportedActions = {HttpMethod.PUT, HttpMethod.POST, HttpMethod.DELETE, HttpMethod.PATCH};
 
         // disable HTTP methods for classes: PUT, POST, DELETE and PATCH
-        disableHttpMethods(Product.class,config, theUnsupportedActions);
-        disableHttpMethods(ProductCategory.class,config, theUnsupportedActions);
-        disableHttpMethods(Country.class,config, theUnsupportedActions);
-        disableHttpMethods(State.class,config, theUnsupportedActions);
+        disableHttpMethods(Product.class, config, theUnsupportedActions);
+        disableHttpMethods(ProductCategory.class, config, theUnsupportedActions);
+        disableHttpMethods(Country.class, config, theUnsupportedActions);
+        disableHttpMethods(State.class, config, theUnsupportedActions);
+        disableHttpMethods(Order.class, config, theUnsupportedActions);
 
         // call an internal helper method that help us to expose the ids
         exposeIds(config);
