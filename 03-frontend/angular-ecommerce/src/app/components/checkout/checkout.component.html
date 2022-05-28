@@ -427,159 +427,18 @@
           </div>
         </div>
 
-        <!-- Credit Card -->
+        <!-- Stripe Elements Credit Card Section-->
         <div formGroupName="creditCard" class="form-area">
-          <h3>Card bancar</h3>
 
-          <div class="row">
-            <div class="col-md-2"><label>Tip de card</label></div>
-            <div class="col-md-9">
-              <div class="input-space">
-                <select formControlName="cardType">
-                  <option>Visa</option>
-                  <option>Mastercard</option>
-                </select>
+          <h3>Card de debit sau de credit</h3>
 
-                <div
-                  *ngIf="
-                    creditCardType.invalid &&
-                    (creditCardType.dirty || creditCardType.touched)
-                  "
-                  class="alert alert-danger mt-1"
-                >
-                  <div
-                    *ngIf="
-                      creditCardType.errors.required ||
-                      creditCardType.errors.notOnlyWhitespace
-                    "
-                  >
-                    Tipul de card este obligatoriu!
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-md-2"><label>Nume titular card</label></div>
-              <div class="col-md-9">
-                <div class="input-space">
-                  <input formControlName="nameOnCard" type="text" />
-
-                  <div
-                    *ngIf="
-                      creditCardNameOnCard.invalid &&
-                      (creditCardNameOnCard.dirty ||
-                        creditCardNameOnCard.touched)
-                    "
-                    class="alert alert-danger mt-1"
-                  >
-                    <div
-                      *ngIf="
-                        creditCardNameOnCard.errors.required ||
-                        creditCardNameOnCard.errors.notOnlyWhitespace
-                      "
-                    >
-                      Numele titularului este obligatoriu!
-                    </div>
-
-                    <div *ngIf="creditCardNameOnCard.errors.minlength">
-                      Numele titularului trebuie sa contina ce putin 2 caractere!
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-md-2"><label>Numar card</label></div>
-              <div class="col-md-9">
-                <div class="input-space">
-                  <input formControlName="cardNumber" type="text" />
-
-                  <div
-                    *ngIf="
-                      creditCardNumber.invalid &&
-                      (creditCardNumber.dirty || creditCardNumber.touched)
-                    "
-                    class="alert alert-danger mt-1"
-                  >
-                    <div
-                      *ngIf="
-                        creditCardNumber.errors.required ||
-                        creditCardNumber.errors.notOnlyWhitespace
-                      "
-                    >
-                      Numarul cardului este obligatoriu!
-                    </div>
-
-                    <div *ngIf="creditCardNumber.errors.pattern">
-                      Numarul cardului trebuie sa contina 16 numere!
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-md-2"><label>Cod de securitate</label></div>
-              <div class="col-md-9">
-                <div class="input-space">
-                  <input formControlName="securityCode" type="text" />
-
-                  <div
-                    *ngIf="
-                      creditCardSecurityCode.invalid &&
-                      (creditCardSecurityCode.dirty ||
-                        creditCardSecurityCode.touched)
-                    "
-                    class="alert alert-danger mt-1"
-                  >
-                    <div
-                      *ngIf="
-                        creditCardSecurityCode.errors.required ||
-                        creditCardSecurityCode.errors.notOnlyWhitespace
-                      "
-                    >
-                      Numarul cardului este obligatoriu!
-                    </div>
-
-                    <div *ngIf="creditCardSecurityCode.errors.pattern">
-                      Numarul cardului trebuie sa contina 3 numere!
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-md-2"><label>Luna de expirare</label></div>
-              <div class="col-md-9">
-                <div class="input-space">
-                  <select formControlName="expirationMonth">
-                    <option *ngFor="let month of creditCardMonths">
-                      {{ month }}
-                    </option>
-                  </select>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-md-2"><label>Anul de expirare</label></div>
-              <div class="col-md-9">
-                <div class="input-space">
-                  <select
-                    formControlName="expirationYear"
-                    (change)="handleMonthsAndYears()"
-                  >
-                    <option *ngFor="let year of creditCardYears">
-                      {{ year }}
-                    </option>
-                  </select>
-                </div>
-              </div>
-            </div>
+          <div id="card-element">
+            <!-- a stripe elemenet will be inserted here-->
           </div>
+
+          <!-- used to display form errors -->
+          <div id="card-errors" class="displayError.textContent!=='': 'alert alert-danger mt-1'"></div>
+
         </div>
 
         <!-- Order Details -->
@@ -593,7 +452,7 @@
 
         <!-- submit button -->
         <div class="text-center">
-          <button type="submit" class="btn btn-info">
+          <button type="submit" class="btn btn-info" [disabled]="isDisabled">
             Finalizează comanda
           </button>
         </div>

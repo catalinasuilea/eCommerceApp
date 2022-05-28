@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  teaShopApiUrl: "https://localhost:8121/api"
+  teaShopApiUrl: "https://localhost:8121/api",
+  stripePublishableKey: "pk_test_51L4OyTKC8YNzTfUzuphiGcORsPxiDeKOLUo0l38IIFGxipr03HLfSSzsRU2yw3v1p5Cm6stPh0SUN2zpk630sqni00L2MhbwWu"
 };
 
 /*
