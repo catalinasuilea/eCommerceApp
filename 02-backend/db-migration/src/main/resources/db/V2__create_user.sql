@@ -1,17 +1,5 @@
-DROP TABLE IF EXISTS users CASCADE;
 DROP TABLE IF EXISTS product_category CASCADE;
 DROP TABLE IF EXISTS product CASCADE;
-
-CREATE TABLE IF NOT EXISTS users (
-  user_id serial NOT NULL PRIMARY KEY,
-  firstname varchar(255) NOT NULL,
-  lastname varchar(255) NOT NULL,
-  email varchar(50) NOT NULL,
-  phone varchar(20) NOT NULL,
-  created_date timestamp,
-  modified_date timestamp,
-  password varchar(200)
-);
 
 CREATE TABLE IF NOT EXISTS product_category (
    id SERIAL NOT NULL PRIMARY KEY,

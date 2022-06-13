@@ -5,9 +5,9 @@
             <div *ngIf="orderHistoryList.length > 0">
                 <table class="table table-bordered">
                     <tr>
-                        <th width="20%">Numarul comenzii</th>
-                        <th width="10%">Pretul total</th>
-                        <th width="10%">Cantitatea totala</th>
+                        <th width="20%">Numărul comenzii</th>
+                        <th width="10%">Prețul total</th>
+                        <th width="10%">Cantitatea totală</th>
                         <th width="10%">Data</th>
                     </tr>
 
@@ -18,7 +18,7 @@
                         </td>
 
                         <td>
-                            {{ templateOrderHistory.totalPrice | currency: 'USD' }}
+                            {{ templateOrderHistory.totalPrice }} RON
                         </td>
 
                         <td>

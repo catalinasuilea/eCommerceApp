@@ -19,14 +19,14 @@
             </td>
             <td>
               <p>{{ tempCartItem.name }}</p>
-              <p>{{ tempCartItem.unitPrice | currency: "USD" }}</p>
+              <p>{{ tempCartItem.unitPrice }} RON </p>
             </td>
             <td>
               <div class="items">
                 <label>Cantitate:</label> 
                 <div class="row no gutters">
                     <div class ="col">
-                        <button (click)="incrementQuantity(tempCartItem)"  class="btn btn-primary btn-sm">
+                        <button (click)="incrementQuantity(tempCartItem)"  class="btn1 btn-primary btn-sm">
                             <i class="fas fa-plus"></i>
                         </button>
                     </div>
@@ -36,7 +36,7 @@
                     </div>
 
                     <div class ="col">
-                        <button (click)="decrementQuantity(tempCartItem)" class="btn btn-primary btn-sm">
+                        <button (click)="decrementQuantity(tempCartItem)" class="btn2 btn-primary btn-sm">
                             <i class="fas fa-minus"></i>
                         </button>
                     </div>
@@ -46,15 +46,14 @@
               </div>
 
               <div class ="col">
-              <button (click)="remove(tempCartItem)" class="btn btn-primary btn-sm">Elimină din coș</button>
+              <button (click)="remove(tempCartItem)" class="btn3 btn-primary btn-sm">Elimină din coș</button>
             </div>
 
               <p class="mt-2">
                 Subtotal:
                 {{
                   tempCartItem.quantity * tempCartItem.unitPrice
-                    | currency: "USD"
-                }}
+                }} RON
               </p>
             </td>
           </tr>
@@ -62,9 +61,9 @@
           <tr>
             <td colspan="2"></td>
             <td style="font-weight: bold">
-              <p>Cantitatea totala: {{ totalQuantity }}</p>
-              <p>Livrare: GRATIS</p>
-              <p>Pretul total: {{ totalPrice | currency: "USD" }}</p>
+              <p>Cantitatea totală: {{ totalQuantity }}</p>
+              <p>Livrare: GRATUITĂ</p>
+              <p>Prețul total: {{ totalPrice }} RON</p>
               <div class ="col">
               <a routerLink="/checkout" class="btn btn-primary">Mergi la casă</a>
             </div>

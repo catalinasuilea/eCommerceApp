@@ -14,9 +14,9 @@
             </a>
 
             <div class="price">
-              {{ tempProduct.unitPrice | currency: "USD" }}
+              {{ tempProduct.unitPrice }} RON 
             </div>
-            <button (click)="addToCart(tempProduct)" class="btn btn-primary btn-sm">Add to cart</button>
+            <button (click)="addToCart(tempProduct)" class="btn btn-primary btn-sm">Adaugă in coș</button>
           </div>
         </div>
 
@@ -31,14 +31,24 @@
       </div>
 
       <!-- begin footer -->
+      <div  style="text-align: center;">
+        <span class ="mr-2">Produse afisate</span>
 
+        <select (change)="updatePageSize($any($event.target).value)">
+          <option selected ="true">4</option>
+          <option>8</option>
+          <option>12</option>
+          <option>20</option>
+        </select>
+       </div>
       <div class="footer-pagination">
-        <div class="row">
-          <div class="col-md-6"></div>
+        
+        <div >
+          <div ></div>
             
-            <div class="col-md-6">
-              <div class="row">
-                <div class="col-md-9" style="padding-left: 30%">
+            <div >
+              <div >
+                <div >
                    <!-- Left:parameters from the ngb-pagination. Right:properties from the ProductListComponent -->
                   <ngb-pagination [(page)]="thePageNumber"
                                   [pageSize]="thePageSize"
@@ -50,16 +60,7 @@
 
                 </div>
 
-                 <div class="col-md-3 mt-2" style="text-align: right;">
-                  <span class ="mr-2">Produse afisate</span>
-
-                  <select (change)="updatePageSize($any($event.target).value)">
-                    <option selected ="true">4</option>
-                    <option>8</option>
-                    <option>12</option>
-                    <option>20</option>
-                  </select>
-                 </div>
+               
 
               </div>
             </div>

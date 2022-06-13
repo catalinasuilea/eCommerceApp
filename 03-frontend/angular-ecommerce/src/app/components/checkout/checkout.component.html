@@ -188,7 +188,7 @@
           </div>
 
           <div class="row">
-            <div class="col-md-2"><label>Stat</label></div>
+            <div class="col-md-2"><label>Stat/Regiune</label></div>
             <div class="col-md-9">
               <div class="input-space">
                 <select formControlName="state">
@@ -214,7 +214,7 @@
                       shippingAddressStatet.errors.notOnlyWhitespace
                     "
                   >
-                    Statul este obligatoriu!
+                    Statul/regiunea este obligatoriu/e!
                   </div>
                 </div>
               </div>
@@ -363,7 +363,7 @@
           </div>
 
           <div class="row">
-            <div class="col-md-2"><label>Stat</label></div>
+            <div class="col-md-2"><label>Stat/Regiune</label></div>
             <div class="col-md-9">
               <div class="input-space">
                 <select formControlName="state">
@@ -388,7 +388,7 @@
                       billingAddressStatet.errors.notOnlyWhitespace
                     "
                   >
-                    Statul este obligatoriu!
+                    Statul/regiunea este obligatoriu/e!
                   </div>
                 </div>
               </div>
@@ -447,7 +447,7 @@
 
           <p>Cantitatea totala: {{ totalQuantity }}</p>
           <p>Livrare: GRATUITA</p>
-          <p>Pretul total: {{ totalPrice | currency: "USD" }}</p>
+          <p>Pretul total: {{ totalPrice }} RON </p>
         </div>
 
         <!-- submit button -->
