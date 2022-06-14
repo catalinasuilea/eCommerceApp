@@ -5,7 +5,7 @@
 */
 .security-btn {
     position:relative;
-    right:0;
+    right:0px;
     min-width:95px;
     color:#fff;
     border:10px solid #205b8d;
@@ -43,4 +43,8 @@
     -o-transition:all .5s ease;
     -moz-transition:all .5s ease;
     transition:all .5s ease
+}
+
+.comenzi-btn {
+    margin-left: 10px;
 }

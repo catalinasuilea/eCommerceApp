@@ -10,13 +10,13 @@
             </a>
 
             <a routerLink="/products/{{ tempProduct.id }}">
-              <h1>{{ tempProduct.name }}</h1>
+              <h1 class="text">{{ tempProduct.name }}</h1>
             </a>
 
             <div class="price">
               {{ tempProduct.unitPrice }} RON 
             </div>
-            <button (click)="addToCart(tempProduct)" class="btn btn-primary btn-sm">Adaugă in coș</button>
+            <button (click)="addToCart(tempProduct)" class="btn btn-primary btn-sm">Adaugă în coș</button>
           </div>
         </div>
 

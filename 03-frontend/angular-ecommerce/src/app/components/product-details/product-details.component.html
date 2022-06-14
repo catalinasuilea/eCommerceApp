@@ -5,12 +5,12 @@
 
         <h3>{{ product.name }}</h3>
         <div class="price">{{ product.unitPrice }} RON </div>
-        <button (click)="addToCart()" class="btn btn-primary btn-sm">Adauga in cos</button>
+        <button (click)="addToCart()" class="btn btn-primary btn-sm">Adaugă în coș <i class="fa-solid fa-basket-shopping"></i></button>
 
         <hr>
         <h4>Descriere</h4>
         <p>{{  product.description }}</p>
 
-        <a routerLink="/products" class="mt-5">Inapoi la lista de produse</a>
+        <a routerLink="/products" class="mt-5"><i class="fa-solid fa-arrow-left"></i> Înapoi la lista de produse </a>
     </div>
 </div>
